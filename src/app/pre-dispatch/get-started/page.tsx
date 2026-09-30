@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import styles from "@/features/pre-dispatch/pre-dispatch.module.css";
 import { preDispatchFlags } from "@/features/pre-dispatch/config";
 import { OnboardingForm } from "@/features/pre-dispatch/ui/OnboardingForm";
@@ -10,7 +9,9 @@ import { getDb } from "@/lib/db";
 export const metadata:Metadata={title:"Get Started | GGuard Pre-Dispatch",robots:{index:false,follow:false}};
 export const dynamic="force-dynamic";
 export default async function Page(){
-  if(!preDispatchFlags.enabled||!preDispatchFlags.onboarding)notFound();
+  // Onboarding is rolled out in stages behind the pilot flags. While they are off, answer with
+  // a usable page instead of a 404 so the sales calls to action never dead-end.
+  if(!preDispatchFlags.enabled||!preDispatchFlags.onboarding)return <main className={styles.shell}><section className={styles.panel}><div className={styles.eyebrow}>Pilot onboarding</div><h1>Self-serve pilot setup is not open yet</h1><p className={styles.muted}>Contractor onboarding is opening in small groups so early pilots get hands-on support. You can walk the whole intake flow now in the sample demo, or ask us to open an onboarding link for your company.</p><div className={styles.panelActions}><Link className={styles.button} href="/pre-dispatch/demo">Open the live demo</Link><a className={styles.buttonGhost} href="mailto:clayton@ggaurdai.com?subject=Pre-Dispatch%2030-day%20pilot">Request a pilot link</a><Link className={styles.buttonGhost} href="/pre-dispatch#pricing">See pricing</Link></div></section></main>;
   const user=await getCurrentUser();
   if(!user)return <main className={styles.shell}><section className={styles.panel}><h1>Sign in to onboard your company</h1><p>Pre-Dispatch must be connected to a verified contractor organization.</p><Link className={styles.button} href="/auth/sign-in?next=/pre-dispatch/get-started">Sign in</Link></section></main>;
   const rows=await getDb()`SELECT o.customer_type FROM profiles p LEFT JOIN organizations o ON o.id=p.organization_id WHERE p.id=${user.id} LIMIT 1`;

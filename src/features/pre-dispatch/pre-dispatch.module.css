@@ -2,3 +2,5 @@
 .tableWrap{overflow:auto;border:1px solid rgba(255,255,255,.12);border-radius:12px}.table{width:100%;border-collapse:collapse;background:#0f172a}.table th,.table td{padding:12px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);vertical-align:top}.table th{background:#1e293b}.table td:first-child{max-width:320px;overflow-wrap:anywhere}
 @media(max-width:720px){.grid3,.formGrid{grid-template-columns:1fr}.full{grid-column:auto}.hero{padding-top:60px}.navlinks a:first-child{display:none}.panel{margin:16px 12px;padding:18px}.section{padding-top:52px;padding-bottom:52px}}
 @media(prefers-reduced-motion:reduce){.shell,.shell *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+.panelActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}

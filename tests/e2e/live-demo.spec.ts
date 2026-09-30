@@ -47,3 +47,9 @@ for (const route of ["/", "/verify", "/records", "/properties", "/privacy", "/te
         expect(await canvasLuminance(page)).toBeLessThan(0.2);
     });
 }
+test("the pilot calls to action land on a usable page instead of a 404", async ({ page }) => {
+    const response = await page.goto("/pre-dispatch/get-started");
+    expect(response?.status()).toBe(200);
+    // Holds both while the pilot is staged and once self-serve onboarding opens.
+    await expect(page.locator("main")).toContainText(/pilot|onboard/i);
+});

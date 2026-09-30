@@ -43,6 +43,11 @@ export function Footer() {
                             </Link>
                         </li>
                         <li>
+                            <Link href="/pre-dispatch/demo" className={linkClass}>
+                                Live Demo (sample data)
+                            </Link>
+                        </li>
+                        <li>
                             <Link href="/portal" className={linkClass}>
                                 HOA / PM Portal
                             </Link>

@@ -92,19 +92,19 @@ export function MediaUploader({
             ? "video/mp4,video/quicktime,video/webm"
             : "image/jpeg,image/png,image/webp";
         return (
-            <div key={slot.category} className={`rounded-2xl border-2 p-4 ${upload ? "border-teal-500 bg-teal-50" : "border-slate-300 bg-white"}`}>
+            <div key={slot.category} className={`rounded-2xl border-2 p-4 ${upload ? "border-cyan-400 bg-cyan-400/10" : "border-white/15 bg-slate-900"}`}>
                 <div className="flex items-start gap-3">
-                    <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${upload ? "bg-teal-700 text-white" : "bg-slate-100 text-slate-700"}`}>
+                    <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${upload ? "bg-cyan-400 text-slate-950" : "bg-white/10 text-slate-300"}`}>
                         {upload ? <CheckCircle2 className="h-5 w-5" /> : slot.mediaType === "video" ? <Video className="h-5 w-5" /> : <Camera className="h-5 w-5" />}
                     </div>
                     <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-2">
-                            <h3 className="text-sm font-bold text-slate-950">{slot.title}</h3>
-                            <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${slot.recommended ? "bg-teal-100 text-teal-900" : "bg-slate-100 text-slate-700"}`}>
+                            <h3 className="text-sm font-bold text-white">{slot.title}</h3>
+                            <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${slot.recommended ? "bg-cyan-400/15 text-cyan-200" : "bg-white/10 text-slate-300"}`}>
                                 {slot.recommended ? "Recommended" : "Optional"}
                             </span>
                         </div>
-                        <p className="mt-1 text-xs leading-5 text-slate-700">{slot.instruction}</p>
+                        <p className="mt-1 text-xs leading-5 text-slate-300">{slot.instruction}</p>
                     </div>
                 </div>
                 <input
@@ -117,17 +117,17 @@ export function MediaUploader({
                     aria-label={`${upload ? "Replace" : "Add"} ${slot.title.toLowerCase()} ${slot.mediaType}`}
                 />
                 <div className="mt-3 flex items-center gap-2">
-                    <label htmlFor={inputId} className="inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-xl bg-teal-700 px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-800 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-teal-700">
+                    <label htmlFor={inputId} className="inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-xl bg-cyan-400 px-4 py-3 text-sm font-semibold text-slate-950 shadow-sm hover:bg-cyan-300 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-cyan-300">
                         {slot.mediaType === "video" ? <Video className="h-5 w-5" /> : <Camera className="h-5 w-5" />}
                         {upload ? "Replace" : slot.mediaType === "video" ? "Add video" : "Add photo"}
                     </label>
                     {upload ? (
-                        <button type="button" onClick={() => onRemove(upload.key)} className="inline-flex min-h-12 items-center gap-1 rounded-xl border border-slate-400 bg-white px-3 text-sm font-semibold text-slate-800 hover:bg-slate-100" aria-label={`Remove ${slot.title.toLowerCase()} upload`}>
+                        <button type="button" onClick={() => onRemove(upload.key)} className="inline-flex min-h-12 items-center gap-1 rounded-xl border border-white/20 bg-white/10 px-3 text-sm font-semibold text-slate-200 hover:bg-white/20" aria-label={`Remove ${slot.title.toLowerCase()} upload`}>
                             <X className="h-4 w-4" /> Remove
                         </button>
                     ) : null}
                 </div>
-                {upload ? <p className="mt-2 truncate text-xs font-medium text-teal-900">Uploaded: {upload.key.split("/").pop()}</p> : null}
+                {upload ? <p className="mt-2 truncate text-xs font-medium text-cyan-200">Uploaded: {upload.key.split("/").pop()}</p> : null}
             </div>
         );
     };
@@ -136,7 +136,7 @@ export function MediaUploader({
         const evidencePlan = getEvidencePlan(problems);
         return (
             <div>
-                <div className="rounded-2xl border border-amber-300 bg-amber-50 p-4 text-amber-950">
+                <div className="rounded-2xl border border-amber-500/40 bg-amber-500/10 p-4 text-amber-100">
                     <div className="flex gap-3">
                         <ShieldAlert className="mt-0.5 h-5 w-5 shrink-0" />
                         <div>
@@ -146,9 +146,9 @@ export function MediaUploader({
                     </div>
                 </div>
                 <div className="mt-4 space-y-3">{evidencePlan.slots.map(renderEvidenceSlot)}</div>
-                {pendingUploads > 0 ? <p aria-live="polite" className="mt-3 text-sm font-medium text-teal-800">Uploading {pendingUploads} file{pendingUploads === 1 ? "" : "s"}…</p> : null}
+                {pendingUploads > 0 ? <p aria-live="polite" className="mt-3 text-sm font-medium text-cyan-300">Uploading {pendingUploads} file{pendingUploads === 1 ? "" : "s"}…</p> : null}
                 {uploadError ? (
-                    <div className="mt-3 rounded-lg border border-red-300 bg-red-50 p-3 text-xs text-red-800">
+                    <div className="mt-3 rounded-lg border border-red-500/40 bg-red-500/10 p-3 text-xs text-red-300">
                         <strong>Upload failed:</strong> {uploadError}
                         <button type="button" onClick={() => setUploadError(null)} className="ml-2 font-semibold underline">Dismiss</button>
                     </div>
@@ -161,19 +161,19 @@ export function MediaUploader({
     return (
         <div>
             <input id="contractor-quote-upload" type="file" accept="image/jpeg,image/png,image/webp,.pdf" data-max-size={75 * 1024 * 1024} onChange={(event) => handleSelect(event)} className="peer sr-only" aria-label="Choose a contractor quote" />
-            <div className="flex min-h-40 flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-400 bg-slate-100 p-5 text-center">
-                {quoteKey ? <FileImage className="mb-2 h-8 w-8 text-teal-700" /> : <Upload className="mb-2 h-8 w-8 text-slate-600" />}
-                <p className="text-sm font-semibold text-slate-900">{quoteKey ? "Contractor quote uploaded" : "Add contractor quote"}</p>
-                <p className="mt-1 text-xs text-slate-600">PDF or clear photo of the contractor quote.</p>
+            <div className="flex min-h-40 flex-col items-center justify-center rounded-2xl border-2 border-dashed border-white/20 bg-white/5 p-5 text-center">
+                {quoteKey ? <FileImage className="mb-2 h-8 w-8 text-cyan-300" /> : <Upload className="mb-2 h-8 w-8 text-slate-400" />}
+                <p className="text-sm font-semibold text-slate-100">{quoteKey ? "Contractor quote uploaded" : "Add contractor quote"}</p>
+                <p className="mt-1 text-xs text-slate-400">PDF or clear photo of the contractor quote.</p>
                 <div className="mt-4 flex gap-2">
-                    <label htmlFor="contractor-quote-upload" className="inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-slate-600 bg-white px-5 py-3 text-sm font-semibold text-slate-950 hover:border-teal-700 hover:bg-teal-50 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-teal-700">
+                    <label htmlFor="contractor-quote-upload" className="inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-cyan-300/60 bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 hover:bg-cyan-300 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-cyan-300">
                         <FileText className="h-5 w-5" /> {quoteKey ? "Replace quote" : "Add quote"}
                     </label>
-                    {quoteKey ? <button type="button" onClick={() => onRemove(quoteKey)} className="min-h-12 rounded-xl border border-slate-400 bg-white px-3 text-sm font-semibold text-slate-800">Remove</button> : null}
+                    {quoteKey ? <button type="button" onClick={() => onRemove(quoteKey)} className="min-h-12 rounded-xl border border-slate-400 bg-white px-3 text-sm font-semibold text-slate-200">Remove</button> : null}
                 </div>
             </div>
-            {pendingUploads > 0 ? <p aria-live="polite" className="mt-2 text-xs font-medium text-teal-800">Uploading…</p> : null}
-            {uploadError ? <p className="mt-2 text-xs font-medium text-red-800">Upload failed: {uploadError}</p> : null}
+            {pendingUploads > 0 ? <p aria-live="polite" className="mt-2 text-xs font-medium text-cyan-300">Uploading…</p> : null}
+            {uploadError ? <p className="mt-2 text-xs font-medium text-red-300">Upload failed: {uploadError}</p> : null}
         </div>
     );
 }

@@ -32,14 +32,14 @@ export default async function VerifyPage({
     return (
         <>
             <Header />
-            <main className="flex-1 bg-slate-50/50 py-12">
+            <main className="flex-1 bg-slate-950 py-12">
                 <div className="mx-auto max-w-lg px-4">
-                    <div className="rounded-3xl border border-slate-200 bg-white p-8 text-center">
-                        <Badge className="bg-emerald-100 text-emerald-800">
+                    <div className="rounded-3xl border border-white/10 bg-slate-900 p-8 text-center">
+                        <Badge className="bg-emerald-500/15 text-emerald-300">
                             Verified
                         </Badge>
 
-                        <h1 className="mt-4 text-2xl font-bold text-slate-900">
+                        <h1 className="mt-4 text-2xl font-bold text-white">
                             Maintenance Record
                         </h1>
 
@@ -48,7 +48,7 @@ export default async function VerifyPage({
                                 <p className="text-xs font-semibold uppercase text-slate-400">
                                     Location
                                 </p>
-                                <p className="text-slate-800">
+                                <p className="text-slate-200">
                                     {"city" in record ? `${String(record.city)}, ${String(record.zip_code)}` : "Private property reference"}
                                 </p>
                             </div>
@@ -57,14 +57,14 @@ export default async function VerifyPage({
                                 <p className="text-xs font-semibold uppercase text-slate-400">
                                     Repair Type
                                 </p>
-                                <p className="text-slate-800">{"repair_type" in record ? String(record.repair_type) : "GGuard diagnostic assessment"}</p>
+                                <p className="text-slate-200">{"repair_type" in record ? String(record.repair_type) : "GGuard diagnostic assessment"}</p>
                             </div>
 
                             <div>
                                 <p className="text-xs font-semibold uppercase text-slate-400">
                                     Completed
                                 </p>
-                                <p className="text-slate-800">
+                                <p className="text-slate-200">
                                     {format(new Date("completed_date" in record ? String(record.completed_date) : String(record.verified_at)), "MMMM d, yyyy")}
                                 </p>
                             </div>
@@ -73,7 +73,7 @@ export default async function VerifyPage({
                                 <p className="text-xs font-semibold uppercase text-slate-400">
                                     Verification Hash
                                 </p>
-                                <p className="break-all font-mono text-xs text-slate-600">
+                                <p className="break-all font-mono text-xs text-slate-400">
                                     {String(record.content_hash)}
                                 </p>
                             </div>

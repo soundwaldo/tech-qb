@@ -36,7 +36,7 @@ export function PropertyLookupForm() {
         <form onSubmit={submit} className="mt-6 space-y-4">
             <Input label="Street address" value={address} onChange={(event) => setAddress(event.target.value)} placeholder="123 Main St, Unit 2" autoComplete="street-address" required />
             <Input label="ZIP code" value={zipCode} onChange={(event) => setZipCode(event.target.value)} placeholder="85001" inputMode="numeric" autoComplete="postal-code" required />
-            {error ? <p role="alert" className="rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-800">{error}</p> : null}
+            {error ? <p role="alert" className="rounded-xl border border-red-500/40 bg-red-500/10 p-3 text-sm text-red-300">{error}</p> : null}
             <Button type="submit" loading={loading} className="w-full">Find property UUID</Button>
         </form>
     );

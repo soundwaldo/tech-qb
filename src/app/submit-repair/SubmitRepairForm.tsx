@@ -154,35 +154,35 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
 
     if (result) {
         return (
-            <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
-                <div className="bg-white rounded-2xl border border-slate-200 p-8 max-w-lg w-full text-center">
-                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
+                <div className="bg-slate-900 rounded-2xl border border-white/10 p-8 max-w-lg w-full text-center">
+                    <div className="w-16 h-16 bg-emerald-500/15 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg className="w-8 h-8 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                     </div>
-                    <h1 className="text-xl font-bold text-slate-900 mb-2">Record Anchored</h1>
+                    <h1 className="text-xl font-bold text-white mb-2">Record Anchored</h1>
                     <p className="text-slate-500 text-sm mb-6">
                         Your repair record has been permanently added to this property&apos;s maintenance ledger.
                     </p>
 
-                    <div className="bg-slate-50 rounded-xl p-4 text-left space-y-3 mb-6">
+                    <div className="bg-white/5 rounded-xl p-4 text-left space-y-3 mb-6">
                         {result.contractorWalletId && (
-                            <div className="border border-teal-200 bg-teal-50 rounded-lg p-3">
-                                <p className="text-xs font-semibold text-teal-800 mb-1 flex items-center gap-1">
+                            <div className="border border-cyan-400/40 bg-cyan-400/10 rounded-lg p-3">
+                                <p className="text-xs font-semibold text-cyan-200 mb-1 flex items-center gap-1">
                                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                     </svg>
                                     Your Contractor Wallet ID
                                 </p>
-                                <p className="text-xs font-mono text-teal-900 break-all">{result.contractorWalletId}</p>
-                                <p className="mt-1 text-xs text-teal-700">
+                                <p className="text-xs font-mono text-cyan-100 break-all">{result.contractorWalletId}</p>
+                                <p className="mt-1 text-xs text-cyan-300">
                                     This is your permanent identity on GGuard. All your repair records are linked to this wallet.
                                 </p>
                                 {result.contractorProfileUrl && (
                                     <a
                                         href={result.contractorProfileUrl}
-                                        className="mt-2 inline-block text-xs text-teal-800 font-medium underline underline-offset-2"
+                                        className="mt-2 inline-block text-xs text-cyan-300 font-medium underline underline-offset-2"
                                     >
                                         View your contractor profile →
                                     </a>
@@ -191,21 +191,21 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
                         )}
                         <div>
                             <p className="text-xs text-slate-500 mb-1">Record ID</p>
-                            <p className="text-xs font-mono text-slate-700 break-all">{result.recordId}</p>
+                            <p className="text-xs font-mono text-slate-300 break-all">{result.recordId}</p>
                         </div>
                         <div>
                             <p className="text-xs text-slate-500 mb-1">Content Hash (SHA-256)</p>
-                            <p className="text-xs font-mono text-slate-700 break-all">{result.contentHash}</p>
+                            <p className="text-xs font-mono text-slate-300 break-all">{result.contentHash}</p>
                         </div>
                         {result.anchorTxId && (
                             <div>
                                 <p className="text-xs text-slate-500 mb-1">Blockchain TX</p>
-                                <p className="text-xs font-mono text-teal-700 break-all">{result.anchorTxId}</p>
+                                <p className="text-xs font-mono text-cyan-300 break-all">{result.anchorTxId}</p>
                             </div>
                         )}
                         <div>
                             <p className="text-xs text-slate-500 mb-1">Status</p>
-                            <span className="inline-block text-xs bg-teal-100 text-teal-800 px-2 py-0.5 rounded-full font-medium">
+                            <span className="inline-block text-xs bg-cyan-400/15 text-cyan-200 px-2 py-0.5 rounded-full font-medium">
                                 {result.anchorStatus}
                             </span>
                         </div>
@@ -214,13 +214,13 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
                     <div className="flex flex-col sm:flex-row gap-3">
                         <a
                             href={result.verifyUrl}
-                            className="flex-1 bg-teal-700 text-white text-sm font-medium px-4 py-2.5 rounded-lg hover:bg-teal-800 transition-colors text-center"
+                            className="flex-1 bg-cyan-400 text-slate-950 text-sm font-medium px-4 py-2.5 rounded-lg hover:bg-cyan-300 transition-colors text-center"
                         >
                             View Property Ledger
                         </a>
                         <button
                             onClick={() => { setResult(null); setForm((prev) => ({ ...prev, summary: "", costDollars: "" })); }}
-                            className="flex-1 border border-slate-200 text-slate-700 text-sm font-medium px-4 py-2.5 rounded-lg hover:bg-slate-50 transition-colors"
+                            className="flex-1 border border-white/20 text-slate-300 text-sm font-medium px-4 py-2.5 rounded-lg hover:bg-white/10 transition-colors"
                         >
                             Submit Another
                         </button>
@@ -231,22 +231,22 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
     }
 
     return (
-        <div className="min-h-screen bg-slate-50">
-            <header className="bg-white border-b border-slate-200">
+        <div className="min-h-screen bg-slate-950">
+            <header className="bg-slate-900 border-b border-white/10">
                 <div className="max-w-2xl mx-auto px-4 py-4 flex items-center gap-3">
-                    <div className="w-8 h-8 bg-teal-700 rounded-lg flex items-center justify-center">
-                        <span className="text-white text-sm font-bold">G</span>
+                    <div className="w-8 h-8 bg-cyan-400 rounded-lg flex items-center justify-center">
+                        <span className="text-slate-950 text-sm font-bold">G</span>
                     </div>
                     <div>
                         <p className="text-xs text-slate-500 font-medium">GGuard Property Ledger</p>
-                        <p className="text-sm font-semibold text-slate-900">Submit Repair Record</p>
+                        <p className="text-sm font-semibold text-white">Submit Repair Record</p>
                     </div>
                 </div>
             </header>
 
             <main className="max-w-2xl mx-auto px-4 py-8">
-                <div className="bg-white rounded-xl border border-slate-200 p-6 mb-6">
-                    <h2 className="font-semibold text-slate-900 mb-1">Permanent Repair Record</h2>
+                <div className="bg-slate-900 rounded-xl border border-white/10 p-6 mb-6">
+                    <h2 className="font-semibold text-white mb-1">Permanent Repair Record</h2>
                     <p className="text-sm text-slate-500">
                         This record will be permanently anchored to the property&apos;s maintenance ledger.
                         Its content hash provides tamper evidence, and your signed-in account is recorded as the submitter.
@@ -254,16 +254,16 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                    <section className="bg-teal-50 border border-teal-200 rounded-xl p-6">
+                    <section className="bg-cyan-400/10 border border-cyan-400/40 rounded-xl p-6">
                         <div className="flex items-start gap-4">
-                            <div className="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <svg className="w-5 h-5 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <div className="w-10 h-10 bg-cyan-400/15 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg className="w-5 h-5 text-cyan-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                                 </svg>
                             </div>
                             <div className="flex-1">
-                                <h3 className="font-semibold text-teal-900 text-sm mb-1">Upload Invoice to Auto-Fill</h3>
-                                <p className="text-xs text-teal-700 mb-3">
+                                <h3 className="font-semibold text-cyan-200 text-sm mb-1">Upload Invoice to Auto-Fill</h3>
+                                <p className="text-xs text-cyan-300 mb-3">
                                     Take a photo or screenshot of the invoice. AI will extract the property address,
                                     contractor, work description, cost, and date automatically.
                                 </p>
@@ -280,8 +280,8 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
                                     htmlFor="invoice-upload"
                                     className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium cursor-pointer transition-colors ${
                                         parsing
-                                            ? "bg-teal-200 text-teal-600 cursor-not-allowed"
-                                            : "bg-teal-700 text-white hover:bg-teal-800"
+                                            ? "bg-slate-700 text-slate-500 cursor-not-allowed"
+                                            : "bg-cyan-400 text-slate-950 hover:bg-cyan-300"
                                     }`}
                                 >
                                     {parsing ? (
@@ -301,7 +301,7 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
                                         </>
                                     )}
                                 </label>
-                                <p className="text-xs text-teal-600 mt-2">JPG, PNG, or WebP · Max 10MB · Or fill the form manually below</p>
+                                <p className="text-xs text-cyan-300 mt-2">JPG, PNG, or WebP · Max 10MB · Or fill the form manually below</p>
                                 {parseError && (
                                     <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mt-2">
                                         {parseError}
@@ -310,10 +310,10 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
                             </div>
                         </div>
                     </section>
-                    <section className="bg-white rounded-xl border border-slate-200 p-6 space-y-4">
-                        <h3 className="font-medium text-slate-900 text-sm">Property Information</h3>
+                    <section className="bg-slate-900 rounded-xl border border-white/10 p-6 space-y-4">
+                        <h3 className="font-medium text-white text-sm">Property Information</h3>
                         <div>
-                            <label className="block text-xs font-medium text-slate-700 mb-1.5">
+                            <label className="block text-xs font-medium text-slate-300 mb-1.5">
                                 Street Address <span className="text-red-500">*</span>
                             </label>
                             <Input
@@ -325,7 +325,7 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
                             />
                         </div>
                         <div>
-                            <label className="block text-xs font-medium text-slate-700 mb-1.5">
+                            <label className="block text-xs font-medium text-slate-300 mb-1.5">
                                 ZIP Code <span className="text-red-500">*</span>
                             </label>
                             <Input
@@ -339,10 +339,10 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
                         </div>
                     </section>
 
-                    <section className="bg-white rounded-xl border border-slate-200 p-6 space-y-4">
-                        <h3 className="font-medium text-slate-900 text-sm">Repair Details</h3>
+                    <section className="bg-slate-900 rounded-xl border border-white/10 p-6 space-y-4">
+                        <h3 className="font-medium text-white text-sm">Repair Details</h3>
                         <div>
-                            <label className="block text-xs font-medium text-slate-700 mb-1.5">
+                            <label className="block text-xs font-medium text-slate-300 mb-1.5">
                                 Trade / Work Type <span className="text-red-500">*</span>
                             </label>
                             <select
@@ -350,14 +350,14 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
                                 value={form.trade}
                                 onChange={handleChange}
                                 required
-                                className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent"
+                                className="w-full border border-white/10 rounded-lg px-3 py-2.5 text-sm text-slate-950 bg-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent"
                             >
                                 <option value="">Select a trade...</option>
                                 {TRADES.map((t) => <option key={t} value={t}>{t}</option>)}
                             </select>
                         </div>
                         <div>
-                            <label className="block text-xs font-medium text-slate-700 mb-1.5">
+                            <label className="block text-xs font-medium text-slate-300 mb-1.5">
                                 Date Completed <span className="text-red-500">*</span>
                             </label>
                             <Input
@@ -370,7 +370,7 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
                             />
                         </div>
                         <div>
-                            <label className="block text-xs font-medium text-slate-700 mb-1.5">
+                            <label className="block text-xs font-medium text-slate-300 mb-1.5">
                                 Work Performed <span className="text-red-500">*</span>
                             </label>
                             <textarea
@@ -380,11 +380,11 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
                                 placeholder="Describe what was repaired or replaced in detail..."
                                 required
                                 rows={4}
-                                className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent resize-none"
+                                className="w-full border border-white/10 rounded-lg px-3 py-2.5 text-sm text-slate-950 bg-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent resize-none"
                             />
                         </div>
                         <div>
-                            <label className="block text-xs font-medium text-slate-700 mb-1.5">
+                            <label className="block text-xs font-medium text-slate-300 mb-1.5">
                                 Total Cost <span className="text-red-500">*</span>
                             </label>
                             <div className="relative">
@@ -404,10 +404,10 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
                         </div>
                     </section>
 
-                    <section className="bg-white rounded-xl border border-slate-200 p-6 space-y-4">
-                        <h3 className="font-medium text-slate-900 text-sm">Contractor Information</h3>
+                    <section className="bg-slate-900 rounded-xl border border-white/10 p-6 space-y-4">
+                        <h3 className="font-medium text-white text-sm">Contractor Information</h3>
                         <div>
-                            <label className="block text-xs font-medium text-slate-700 mb-1.5">
+                            <label className="block text-xs font-medium text-slate-300 mb-1.5">
                                 Company / Name <span className="text-red-500">*</span>
                             </label>
                             <Input
@@ -419,7 +419,7 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
                             />
                         </div>
                         <div>
-                            <label className="block text-xs font-medium text-slate-700 mb-1.5">
+                            <label className="block text-xs font-medium text-slate-300 mb-1.5">
                                 License Number <span className="text-slate-400 font-normal">(optional)</span>
                             </label>
                             <Input
@@ -430,7 +430,7 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
                             />
                         </div>
                         <div>
-                            <label className="block text-xs font-medium text-slate-700 mb-1.5">
+                            <label className="block text-xs font-medium text-slate-300 mb-1.5">
                                 Contact Email <span className="text-slate-400 font-normal">(optional)</span>
                             </label>
                             <Input
@@ -442,7 +442,7 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
                             />
                         </div>
                         <div>
-                            <label className="block text-xs font-medium text-slate-700 mb-1.5">
+                            <label className="block text-xs font-medium text-slate-300 mb-1.5">
                                 Related GGuard Assessment ID <span className="text-slate-400 font-normal">(optional)</span>
                             </label>
                             <Input
@@ -456,7 +456,7 @@ export function SubmitRepairForm({ initialInviteToken }: { initialInviteToken: s
                     </section>
 
                     {error && (
-                        <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-sm text-red-700">
+                        <div className="bg-red-500/10 border border-red-500/40 rounded-lg p-4 text-sm text-red-300">
                             {error}
                         </div>
                     )}

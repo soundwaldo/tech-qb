@@ -12,12 +12,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variants: Record<Variant, string> = {
     primary:
-        "bg-teal-700 text-white hover:bg-teal-800 shadow-sm disabled:bg-teal-400",
+        "bg-cyan-400 text-slate-950 hover:bg-cyan-300 shadow-sm disabled:bg-slate-700 disabled:text-slate-400",
     secondary:
-        "bg-slate-900 text-white hover:bg-slate-800 shadow-sm disabled:bg-slate-400",
+        "bg-slate-800 text-white hover:bg-slate-700 shadow-sm disabled:bg-slate-700 disabled:text-slate-400",
     outline:
-        "border-2 border-teal-700 text-teal-800 hover:bg-teal-50 disabled:opacity-50",
-    ghost: "text-slate-700 hover:bg-slate-100 disabled:opacity-50",
+        "border-2 border-cyan-400/70 text-cyan-300 hover:bg-cyan-400/10 disabled:opacity-50",
+    ghost: "text-slate-300 hover:bg-white/10 disabled:opacity-50",
     danger: "bg-red-600 text-white hover:bg-red-700 disabled:bg-red-300",
     accent:
         "bg-amber-500 text-slate-900 hover:bg-amber-400 font-semibold shadow-sm",
@@ -46,7 +46,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             ref={ref}
             disabled={disabled || loading}
             className={cn(
-                "inline-flex items-center justify-center gap-2 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed",
+                "inline-flex items-center justify-center gap-2 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:cursor-not-allowed",
                 variants[variant],
                 sizes[size],
                 className

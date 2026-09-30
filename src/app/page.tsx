@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { ArrowRight, ChevronDown, FileCheck2, MousePointerClick, ShieldCheck } from "lucide-react";
+import { ArrowRight, ChevronDown, FileCheck2, MousePointerClick, Play, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Diagnostics & Contractor Website Widget",
@@ -36,6 +36,10 @@ export default function Home() {
                 See the two products
                 <ChevronDown className="h-4 w-4" aria-hidden="true" />
               </a>
+              <Link href="/pre-dispatch/demo" className="inline-flex items-center gap-2 rounded-xl border border-cyan-400/50 bg-cyan-400/10 px-5 py-3 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300">
+                Live demo
+                <Play className="h-4 w-4" aria-hidden="true" />
+              </Link>
               <a href="#how-it-works" className="text-sm font-medium text-slate-300 underline underline-offset-4 transition hover:text-white">
                 How it works
               </a>

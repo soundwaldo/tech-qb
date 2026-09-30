@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, ShieldCheck, ArrowRight, ArrowUpRight } from "lucide-react";
+import { Menu, X, ShieldCheck, ArrowRight, ArrowUpRight, Play } from "lucide-react";
 
 const NAV = [
     { href: "/diagnostics", label: "Diagnostics" },
@@ -99,6 +99,10 @@ export function Header() {
                     </nav>
 
                     <div className="flex shrink-0 items-center gap-3">
+                        <Link href="/pre-dispatch/demo" className="hidden items-center gap-1.5 rounded-xl border border-cyan-400/50 bg-cyan-400/10 px-4 py-2 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 md:inline-flex">
+                            Live demo
+                            <Play className="h-3.5 w-3.5" aria-hidden="true" />
+                        </Link>
                         <Link href="/#products" className="hidden items-center gap-1.5 rounded-xl bg-cyan-400 px-4 py-2 text-sm font-semibold text-slate-950 shadow-md shadow-cyan-950/20 transition hover:bg-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 md:inline-flex">
                             Choose a product <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                         </Link>
@@ -136,6 +140,14 @@ export function Header() {
                                 </Link>
                             );
                         })}
+                        <Link
+                            href="/pre-dispatch/demo"
+                            onClick={() => setOpen(false)}
+                            className="flex min-h-11 items-center justify-between rounded-xl px-4 text-[15px] font-medium text-cyan-200 transition-colors hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                        >
+                            Live demo
+                            <Play className="h-4 w-4" aria-hidden="true" />
+                        </Link>
                         <Link href="/#products" className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" onClick={() => setOpen(false)}>
                             Choose a product <ArrowRight className="h-4 w-4" aria-hidden="true" />
                         </Link>

@@ -15,13 +15,13 @@ function SuccessContent() {
     return (
         <>
             <Header />
-            <main className="flex-1 bg-slate-50/50 py-20">
+            <main className="flex-1 bg-slate-950 py-20">
                 <div className="mx-auto max-w-md px-4 text-center">
-                    <CheckCircle2 className="mx-auto h-16 w-16 text-emerald-600" />
-                    <h1 className="mt-4 text-2xl font-bold text-slate-900">
+                    <CheckCircle2 className="mx-auto h-16 w-16 text-emerald-400" />
+                    <h1 className="mt-4 text-2xl font-bold text-white">
                         Payment received!
                     </h1>
-                    <p className="mt-2 text-slate-600">
+                    <p className="mt-2 text-slate-400">
                         Your assessment is in the queue. We&apos;ll email you when the report is
                         ready.
                     </p>

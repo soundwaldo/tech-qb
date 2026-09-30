@@ -125,16 +125,16 @@ function UploadContent() {
     return (
         <>
             <Header />
-            <main className="flex-1 bg-slate-50/50 py-8 sm:py-12">
+            <main className="flex-1 bg-slate-950 py-8 sm:py-12">
                 <div className="mx-auto max-w-2xl px-4">
-                    <div className="mb-6 rounded-xl border border-cyan-200 bg-cyan-50 p-4 text-slate-800">
+                    <div className="mb-6 rounded-xl border border-cyan-400/40 bg-cyan-400/10 p-4 text-cyan-100">
                         <p className="font-semibold">GGuard Diagnostics — Repair Assessment</p>
                         <p className="mt-1 text-sm">This purchase is for an expert-reviewed assessment, not a contractor website widget. <Link href="/pre-dispatch" className="underline">Looking for Pre-Dispatch?</Link></p>
                     </div>
                     {/* Error Alert */}
                     {error && (
-                        <div className="mb-6 rounded-lg border border-red-300 bg-red-50 p-4">
-                            <p className="text-sm text-red-800">
+                        <div className="mb-6 rounded-lg border border-red-500/40 bg-red-500/10 p-4">
+                            <p className="text-sm text-red-300">
                                 <strong>Error:</strong> {error}
                             </p>
                         </div>
@@ -147,10 +147,10 @@ function UploadContent() {
                                 <div key={s} className="flex items-center">
                                     <div
                                         className={`h-2.5 w-8 rounded-full transition ${
-                                            s === step ? "bg-teal-600" : s < step ? "bg-teal-300" : "bg-slate-200"
+                                            s === step ? "bg-cyan-400" : s < step ? "bg-cyan-300" : "bg-slate-700"
                                         }`}
                                     />
-                                    {s < 3 && <div className={`mx-2 h-0.5 w-4 ${s < step ? "bg-teal-300" : "bg-slate-200"}`} />}
+                                    {s < 3 && <div className={`mx-2 h-0.5 w-4 ${s < step ? "bg-cyan-300" : "bg-slate-700"}`} />}
                                 </div>
                             ))}
                         </div>
@@ -161,10 +161,10 @@ function UploadContent() {
                         </div>
                     </div>
 
-                    <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                    <div className="rounded-3xl border border-white/10 bg-slate-900 p-6 sm:p-8">
                         {step === 1 && (
                             <div>
-                                <h2 className="text-xl font-bold text-slate-900">
+                                <h2 className="text-xl font-bold text-white">
                                     Tell Us About Your Door
                                 </h2>
                                 <p className="mt-1 text-sm text-slate-500">
@@ -173,8 +173,8 @@ function UploadContent() {
 
                                 <div className="mt-6 space-y-4">
                                     {/* Contact Info */}
-                                    <div className="rounded-lg border border-slate-200 bg-slate-50 p-3.5">
-                                        <p className="text-xs font-semibold text-slate-700 uppercase mb-3">Your Contact Info</p>
+                                    <div className="rounded-lg border border-white/10 bg-white/5 p-3.5">
+                                        <p className="text-xs font-semibold text-slate-400 uppercase mb-3">Your Contact Info</p>
                                         <Input
                                             label="Email"
                                             type="email"
@@ -186,8 +186,8 @@ function UploadContent() {
                                     </div>
 
                                     {/* Property Info */}
-                                    <div className="rounded-lg border border-slate-200 bg-slate-50 p-3.5">
-                                        <p className="text-xs font-semibold text-slate-700 uppercase mb-3">Property Location</p>
+                                    <div className="rounded-lg border border-white/10 bg-white/5 p-3.5">
+                                        <p className="text-xs font-semibold text-slate-400 uppercase mb-3">Property Location</p>
                                         <Input
                                             label="Street Address"
                                             placeholder="123 Main St"
@@ -203,7 +203,7 @@ function UploadContent() {
                                             error={zipCode && !isValidZip(zipCode) ? "Invalid ZIP" : undefined}
                                         />
                                         <div className="mt-3">
-                                            <label className="mb-2 block text-sm font-medium text-slate-700">
+                                            <label className="mb-2 block text-sm font-medium text-slate-300">
                                                 Door Type
                                             </label>
                                             <div className="grid grid-cols-2 gap-3">
@@ -214,8 +214,8 @@ function UploadContent() {
                                                         onClick={() => setDoorType(d)}
                                                         aria-pressed={doorType === d}
                                                         className={`rounded-lg border-2 p-3 text-center text-sm font-medium transition ${doorType === d
-                                                            ? "border-teal-700 bg-teal-100 text-slate-950 shadow-sm"
-                                                            : "border-slate-400 bg-slate-100 text-slate-900 hover:border-teal-600 hover:bg-teal-50"
+                                                            ? "border-cyan-400 bg-cyan-400 text-slate-950 shadow-sm"
+                                                            : "border-white/15 bg-slate-800 text-slate-300 hover:border-cyan-300 hover:bg-cyan-400/10"
                                                             }`}
                                                     >
                                                         {d === "single" ? "Single Door" : "Double Door"}
@@ -226,21 +226,21 @@ function UploadContent() {
                                     </div>
 
                                     {/* Issues Section */}
-                                    <div className="rounded-lg border border-slate-200 bg-slate-50 p-3.5">
-                                        <p className="text-xs font-semibold text-slate-700 uppercase mb-3">What&apos;s The Problem?</p>
+                                    <div className="rounded-lg border border-white/10 bg-white/5 p-3.5">
+                                        <p className="text-xs font-semibold text-slate-400 uppercase mb-3">What&apos;s The Problem?</p>
                                         <ProblemPicker value={problems} onChange={setProblems} />
                                     </div>
 
                                     {/* Notes */}
                                     <textarea
-                                        className="w-full rounded-lg border border-slate-400 bg-white px-4 py-2.5 text-sm text-slate-950 placeholder:text-slate-500 outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/30"
+                                        className="w-full rounded-lg border border-white/20 bg-white px-4 py-2.5 text-sm text-slate-950 placeholder:text-slate-500 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30"
                                         rows={2}
                                         aria-label="Additional details"
                                         placeholder="Any additional details? (optional)"
                                         value={description}
                                         onChange={(e) => setDescription(e.target.value)}
                                     />
-                                    <div className="rounded-lg border border-teal-300 bg-teal-50 p-3 text-sm font-medium text-teal-950">
+                                    <div className="rounded-lg border border-cyan-400/40 bg-cyan-400/10 p-3 text-sm font-medium text-cyan-100">
                                         Next: {evidencePlan.summary}
                                     </div>
                                 </div>
@@ -249,7 +249,7 @@ function UploadContent() {
 
                         {step === 2 && (
                             <div>
-                                <h2 className="text-xl font-bold text-slate-900">
+                                <h2 className="text-xl font-bold text-white">
                                     Show Us What You&apos;re Seeing
                                 </h2>
                                 <p className="mt-1 text-sm text-slate-500">
@@ -276,17 +276,17 @@ function UploadContent() {
                                                 setEvidence((current) => current.filter((item) => item.key !== key))
                                             }
                                         />
-                                        <div className="mt-4 rounded-xl border border-teal-200 bg-teal-50 p-3 text-xs leading-5 text-teal-950">
+                                        <div className="mt-4 rounded-xl border border-cyan-400/40 bg-cyan-400/10 p-3 text-xs leading-5 text-cyan-100">
                                             If the submitted photos don&apos;t show enough detail, we may email you to request a photo of a specific area before finalizing your report.
                                         </div>
-                                        <div className="mt-4 rounded-2xl border border-slate-300 bg-slate-50 p-4">
-                                            <label htmlFor="issue-description" className="block text-sm font-bold text-slate-950">
+                                        <div className="mt-4 rounded-2xl border border-white/15 bg-white/5 p-4">
+                                            <label htmlFor="issue-description" className="block text-sm font-bold text-white">
                                                 Can&apos;t safely photograph the issue?
                                             </label>
-                                            <p className="mt-1 text-xs leading-5 text-slate-700">Describe what you see, hear or experience. This is optional, but it helps when an area is unsafe or difficult to photograph.</p>
+                                            <p className="mt-1 text-xs leading-5 text-slate-300">Describe what you see, hear or experience. This is optional, but it helps when an area is unsafe or difficult to photograph.</p>
                                             <textarea
                                                 id="issue-description"
-                                                className="mt-3 w-full rounded-lg border border-slate-400 bg-white px-4 py-3 text-sm text-slate-950 placeholder:text-slate-500 outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/30"
+                                                className="mt-3 w-full rounded-lg border border-white/20 bg-white px-4 py-3 text-sm text-slate-950 placeholder:text-slate-500 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30"
                                                 rows={3}
                                                 placeholder="Example: The door stops halfway and the right cable looks loose."
                                                 value={description}
@@ -294,7 +294,7 @@ function UploadContent() {
                                             />
                                         </div>
                                         {!canNext() ? (
-                                            <p aria-live="polite" className="mt-3 rounded-lg border border-blue-200 bg-blue-50 p-3 text-xs font-medium text-blue-900">
+                                            <p aria-live="polite" className="mt-3 rounded-lg border border-sky-500/40 bg-sky-500/10 p-3 text-xs font-medium text-sky-200">
                                                 {evidencePlan.summary}
                                             </p>
                                         ) : null}
@@ -319,7 +319,7 @@ function UploadContent() {
 
                         {step === 3 && (
                             <div>
-                                <h2 className="text-xl font-bold text-slate-900">
+                                <h2 className="text-xl font-bold text-white">
                                     Review & Complete
                                 </h2>
                                 <p className="mt-1 text-sm text-slate-500">
@@ -331,9 +331,9 @@ function UploadContent() {
 
                                 <div className="mt-6 space-y-4">
                                     {/* Submission Summary */}
-                                    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                                        <p className="text-xs font-semibold text-slate-700 uppercase mb-3">Submission Summary</p>
-                                        <div className="space-y-2 text-sm text-slate-700">
+                                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                                        <p className="text-xs font-semibold text-slate-400 uppercase mb-3">Submission Summary</p>
+                                        <div className="space-y-2 text-sm text-slate-300">
                                             <div className="flex justify-between">
                                                 <span>Location:</span>
                                                 <span className="font-medium">{address || zipCode || "Not provided"}</span>
@@ -347,9 +347,9 @@ function UploadContent() {
                                                 <span className="font-medium">{evidence.length} uploaded</span>
                                             </div>
                                             {!isB2B && (
-                                                <div className="flex justify-between pt-2 border-t border-slate-200">
+                                                <div className="flex justify-between pt-2 border-t border-white/10">
                                                     <span>Assessment Tier:</span>
-                                                    <span className="font-medium text-teal-700">
+                                                    <span className="font-medium text-cyan-300">
                                                         {TIER_PRICING[tier].label}
                                                     </span>
                                                 </div>
@@ -359,7 +359,7 @@ function UploadContent() {
 
                                     {!isB2B && (
                                         <>
-                                            <p className="text-sm font-medium text-slate-700 mt-4">Select Assessment Tier</p>
+                                            <p className="text-sm font-medium text-slate-300 mt-4">Select Assessment Tier</p>
                                             <div className="space-y-3">
                                                 {Object.entries(TIER_PRICING).map(([t, pricing]) => (
                                                     <button
@@ -367,20 +367,20 @@ function UploadContent() {
                                                         type="button"
                                                         onClick={() => setTier(t as AssessmentTier)}
                                                         className={`w-full rounded-lg border-2 p-3 text-left transition ${tier === t
-                                                            ? "border-teal-600 bg-teal-50"
-                                                            : "border-slate-200 bg-white"
+                                                            ? "border-cyan-400 bg-cyan-400/15"
+                                                            : "border-white/15 bg-slate-900"
                                                             }`}
                                                     >
                                                         <div className="flex items-start justify-between gap-2">
                                                             <div className="flex-1">
-                                                                <p className="font-semibold text-slate-800 text-sm">
+                                                                <p className="font-semibold text-slate-200 text-sm">
                                                                     {pricing.label}
                                                                 </p>
                                                                 <p className="text-xs text-slate-500 mt-0.5">
                                                                     {pricing.description}
                                                                 </p>
                                                             </div>
-                                                            <p className="text-lg font-bold text-teal-700 flex-shrink-0">
+                                                            <p className="text-lg font-bold text-cyan-300 flex-shrink-0">
                                                                 {formatCurrency(pricing.amount_cents)}
                                                             </p>
                                                         </div>
@@ -391,25 +391,25 @@ function UploadContent() {
                                     )}
 
                                     {isB2B && (
-                                        <div className="rounded-lg border-2 border-cyan-400 bg-cyan-50 p-3">
-                                            <p className="font-semibold text-cyan-700 text-sm">
+                                        <div className="rounded-lg border-2 border-cyan-400/60 bg-cyan-400/10 p-3">
+                                            <p className="font-semibold text-cyan-300 text-sm">
                                                 {b2bType === "hoa" ? "HOA" : "Property Manager"} Assessment
                                             </p>
-                                            <p className="text-xs text-cyan-600 mt-1">
+                                            <p className="text-xs text-cyan-400 mt-1">
                                                 No payment required — using your organization&apos;s subscription.
                                             </p>
                                         </div>
                                     )}
 
                                     {/* AI Consent */}
-                                    <label className="flex items-start gap-3 rounded-lg border border-slate-200 bg-slate-50 p-3 text-xs leading-5 text-slate-700 mt-4">
-                                        <input type="checkbox" checked={aiConsent} onChange={(event) => setAiConsent(event.target.checked)} className="mt-1 h-4 w-4 accent-teal-700 flex-shrink-0" />
+                                    <label className="flex items-start gap-3 rounded-lg border border-white/10 bg-white/5 p-3 text-xs leading-5 text-slate-300 mt-4">
+                                        <input type="checkbox" checked={aiConsent} onChange={(event) => setAiConsent(event.target.checked)} className="mt-1 h-4 w-4 accent-cyan-400 flex-shrink-0" />
                                         <span>I consent to AI analysis of my photos to prepare a diagnostic review that will be verified by a GGuard garage door expert before I see it.</span>
                                     </label>
 
                                     {/* Optional Fields */}
-                                    <div className="border-t border-slate-200 pt-4 mt-4">
-                                        <p className="text-xs font-semibold text-slate-600 uppercase mb-3">Additional Details (optional)</p>
+                                    <div className="border-t border-white/10 pt-4 mt-4">
+                                        <p className="text-xs font-semibold text-slate-400 uppercase mb-3">Additional Details (optional)</p>
                                         
                                         <div>
                                             <Input
@@ -421,7 +421,7 @@ function UploadContent() {
                                         </div>
 
                                         <div className="mt-3">
-                                            <p className="text-xs font-semibold text-slate-700 mb-2">Have a Contractor Quote?</p>
+                                            <p className="text-xs font-semibold text-slate-300 mb-2">Have a Contractor Quote?</p>
                                             <div className="grid gap-3 sm:grid-cols-2">
                                                 <Input
                                                     label="Contractor Name"
@@ -457,18 +457,18 @@ function UploadContent() {
 
                         {submitted && assessmentId && (
                             <div className="text-center py-8">
-                                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-teal-100">
-                                    <span className="text-2xl text-teal-700">✓</span>
+                                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-cyan-400/15">
+                                    <span className="text-2xl text-cyan-300">✓</span>
                                 </div>
-                                <h2 className="text-xl font-bold text-slate-900">
+                                <h2 className="text-xl font-bold text-white">
                                     Assessment Submitted!
                                 </h2>
-                                    <p className="mt-2 text-sm text-slate-600">
+                                    <p className="mt-2 text-sm text-slate-400">
                                     We&apos;ve received your submission and are analyzing it.
                                 </p>
-                                <div className="mt-6 space-y-3 rounded-2xl border border-blue-200 bg-blue-50 p-4 text-left">
-                                    <p className="text-xs font-semibold text-blue-900 uppercase">What Happens Next?</p>
-                                    <ol className="space-y-2 text-sm text-blue-800">
+                                <div className="mt-6 space-y-3 rounded-2xl border border-sky-500/40 bg-sky-500/10 p-4 text-left">
+                                    <p className="text-xs font-semibold text-sky-200 uppercase">What Happens Next?</p>
+                                    <ol className="space-y-2 text-sm text-sky-100">
                                         <li className="flex gap-3">
                                             <span className="font-bold flex-shrink-0">1.</span>
                                             <span><strong>AI Analysis:</strong> Our AI examines your photos and prepares findings.</span>
@@ -484,11 +484,11 @@ function UploadContent() {
                                     </ol>
                                 </div>
                                 <div className="mt-6 space-y-2">
-                                    <p className="text-xs text-slate-600">
-                                        📧 Check your email for updates: <strong className="text-slate-800">{email}</strong>
+                                    <p className="text-xs text-slate-400">
+                                        📧 Check your email for updates: <strong className="text-slate-200">{email}</strong>
                                     </p>
-                                    <p className="text-xs text-slate-600">
-                                        Assessment ID: <code className="bg-slate-100 px-2 py-1 rounded text-slate-800 font-mono text-xs">{assessmentId}</code>
+                                    <p className="text-xs text-slate-400">
+                                        Assessment ID: <code className="bg-white/10 px-2 py-1 rounded text-slate-200 font-mono text-xs">{assessmentId}</code>
                                     </p>
                                 </div>
                                 <Link href="/upload" className="mt-6 inline-block">
@@ -503,7 +503,7 @@ function UploadContent() {
                                     type="button"
                                     onClick={() => setStep((s) => (s > 1 ? ((s - 1) as Step) : s))}
                                     disabled={step === 1}
-                                    className="text-sm font-medium text-slate-600 hover:text-teal-700 disabled:opacity-50"
+                                    className="text-sm font-medium text-slate-400 hover:text-cyan-300 disabled:opacity-50"
                                 >
                                     Back
                                 </button>
@@ -531,5 +531,5 @@ function UploadContent() {
 }
 
 export default function UploadPage() {
-    return <Suspense fallback={<main className="flex min-h-[70vh] items-center justify-center bg-slate-50 text-slate-600">Preparing secure upload…</main>}><UploadContent /></Suspense>;
+    return <Suspense fallback={<main className="flex min-h-[70vh] items-center justify-center bg-slate-950 text-slate-400">Preparing secure upload…</main>}><UploadContent /></Suspense>;
 }

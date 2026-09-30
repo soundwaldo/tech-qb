@@ -9,7 +9,7 @@ export function Card({
     return (
         <div
             className={cn(
-                "rounded-2xl border border-slate-200 bg-white shadow-sm",
+                "rounded-2xl border border-white/10 bg-slate-900/70 shadow-sm text-slate-100",
                 className
             )}
             {...props}
@@ -25,7 +25,7 @@ export function CardHeader({
     ...props
 }: HTMLAttributes<HTMLDivElement>) {
     return (
-        <div className={cn("border-b border-slate-100 px-6 py-4", className)} {...props}>
+        <div className={cn("border-b border-white/10 px-6 py-4", className)} {...props}>
             {children}
         </div>
     );

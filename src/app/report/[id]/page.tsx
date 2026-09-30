@@ -26,5 +26,5 @@ export default async function ReportPage({ params, searchParams }: { params: Pro
     if (!authorized || !["completed", "delivered"].includes(assessmentRow.status || "")) notFound();
     const { data: diagnosis } = await service.from("diagnoses").select("*").eq("assessment_id", id).single();
     if (!diagnosis) notFound();
-    return <><Header /><main className="bg-slate-50 py-5 sm:py-10"><div className="mx-auto max-w-4xl px-3 sm:px-6"><DiagnosticReport assessment={assessmentRow as unknown as Assessment} diagnosis={diagnosis as unknown as Diagnosis} /></div></main><Footer /></>;
+    return <><Header /><main className="bg-slate-950 py-5 sm:py-10"><div className="mx-auto max-w-4xl px-3 sm:px-6"><DiagnosticReport assessment={assessmentRow as unknown as Assessment} diagnosis={diagnosis as unknown as Diagnosis} /></div></main><Footer /></>;
 }

@@ -59,7 +59,8 @@ test.describe("Upload Form Flow", () => {
     const details = page.getByLabel("Additional details");
     await expect(details).toHaveClass(/text-slate-950/);
     await expect(page.getByRole("button", { name: "Single Door" })).toHaveClass(/text-slate-950/);
-    await expect(page.getByRole("button", { name: "Double Door" })).toHaveClass(/text-slate-900/);
+    // Unselected door cards sit on the dark canvas, so their label is light, not near-black.
+    await expect(page.getByRole("button", { name: "Double Door" })).toHaveClass(/text-slate-300/);
   });
 
   test("enables review after any one safe photo", async ({ page }) => {

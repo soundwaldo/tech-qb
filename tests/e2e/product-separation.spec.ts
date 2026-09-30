@@ -7,7 +7,9 @@ test("homepage distinguishes products and routes to separate pricing", async ({ 
   await expect(page.getByRole("link", { name: "Assessment pricing", exact: true }).first()).toHaveAttribute("href", "/diagnostics#pricing");
   await expect(page.getByRole("link", { name: "Widget subscription pricing", exact: true }).first()).toHaveAttribute("href", "/pre-dispatch#pricing");
   await page.getByRole("link", { name: "Explore Diagnostics", exact: true }).click();
-  await expect(page).toHaveURL(/\/diagnostics$/);
+  // The first client-side navigation to /diagnostics can outlast the default budget
+  // while the dev server compiles that route, so let the URL change settle.
+  await expect(page).toHaveURL(/\/diagnostics$/, { timeout: 20_000 });
   await expect(page.getByRole("heading", { name: "Get Your Diagnostic Report" })).toBeVisible();
   await expect(page.locator("main")).not.toContainText("$149/month");
   await expect(page.locator('a[href="/upload?tier=standard"]')).toBeVisible();

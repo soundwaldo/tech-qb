@@ -1,0 +1,70 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+*.log
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+.vercel
+.env*
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+
+.env*
+!.env.example
+
+.vercel
+.env*
+
+# Business / IP documents - not for source control
+BROKER_DATA_ROOM/
+BROKER_SALES_PACKET/
+GGuard_Broker_Handoff_Kit/
+GGuard_PreDispatch_Broker_Handoff_Kit.zip
+BROKER_LAUNCH_READINESS.md
+CUSTOMER_ACQUISITION_PLAN.md
+IP_PROTECTION_PLAN.md
+CONTRIBUTOR_IP_CHECKLIST.md
+SALES_BROKER_IP_TERMS_CHECKLIST.md
+EMBED_WIDGET_PRODUCTION_AUDIT.md

@@ -1,0 +1,11 @@
+import { expect, test } from "@playwright/test";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+
+test.describe("Sales broker controls",()=>{
+  test("uses high-entropy one-time invite material and stores only a hash",()=>{const source=readFileSync(resolve("src/lib/broker.ts"),"utf8");expect(source).toContain("randomBytes(32)");expect(source).toContain('createHash("sha256")');expect(source).not.toContain("invite_token TEXT")});
+  test("keeps broker roles and commissions constrained in the schema",()=>{const schema=readFileSync(resolve("neon/schema.sql"),"utf8");expect(schema).toContain("'sales_broker'");expect(schema).toContain("commission_bps BETWEEN 0 AND 10000");expect(schema).toContain("commission_status IN ('unearned','pending','approved','paid','void')");expect(schema).toContain("invite_token_hash TEXT NOT NULL UNIQUE")});
+  test("attributes checkout and records held commission only from paid recurring invoices",()=>{const billing=readFileSync(resolve("src/app/api/pre-dispatch/portal/billing/route.ts"),"utf8");const webhook=readFileSync(resolve("src/app/api/webhook/stripe/route.ts"),"utf8");const ledger=readFileSync(resolve("src/lib/broker-ledger.ts"),"utf8");expect(billing).toContain("broker_deal_id");expect(webhook).toContain("recordBrokerCommission(invoice,subscription,db)");expect(webhook).toContain("clawBackBrokerCommission(charge,db)");expect(ledger).toContain("broker_commission_ledger");expect(ledger).toContain("now()+interval '30 days'");expect(ledger).toContain("ON CONFLICT(stripe_invoice_id,kind)");expect(ledger).toContain("ON CONFLICT(clawback_of_id,stripe_refund_id)")});
+  test("broker applications, team invites, and support have durable schema",()=>{const schema=readFileSync(resolve("neon/schema.sql"),"utf8");for(const table of ["broker_applications","broker_commission_ledger","pre_dispatch_team_invites","support_tickets"])expect(schema).toContain(`CREATE TABLE IF NOT EXISTS ${table}`)});
+  test("broker workspace does not query customer requests or media",()=>{const broker=readFileSync(resolve("src/app/broker/page.tsx"),"utf8");expect(broker).not.toContain("pre_dispatch_requests");expect(broker).not.toContain("pre_dispatch_media_assets");expect(broker).not.toContain("pre_dispatch_customers")});
+});

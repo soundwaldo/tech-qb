@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>GGuard Pre-Dispatch integration sandbox</title></head>
+<body>
+<main>
+  <h1>GGuard Pre-Dispatch integration sandbox</h1>
+  <p>This page loads the real widget script. Its exact origin must be present in contractor settings.</p>
+  <p id="status" role="status">Reading widget key…</p>
+  <div id="ggaurd-predispatch"></div>
+</main>
+<script>
+  (() => {
+    const key = new URLSearchParams(location.search).get("widgetKey");
+    const status = document.getElementById("status");
+    if (!key || !/^[0-9a-f-]{36}$/i.test(key)) { status.textContent = "Add ?widgetKey=YOUR_WIDGET_KEY to this URL."; return; }
+    const script = document.createElement("script");
+    script.src = "/widget/pre-dispatch.js";
+    script.dataset.company = key;
+    script.onload = () => { status.textContent = "Widget script loaded. If no launcher appears, verify this page origin in contractor settings."; };
+    script.onerror = () => { status.textContent = "Widget script could not be loaded."; };
+    document.body.append(script);
+  })();
+</script>
+</body>
+</html>

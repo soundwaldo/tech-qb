@@ -1,0 +1,61 @@
+{
+  "name": "gguard",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "db:migrate": "node --env-file=.env.local scripts/migrate-neon.mjs",
+    "db:check": "node --env-file=.env.local scripts/check-neon.mjs",
+    "test": "playwright test",
+    "test:unit": "node --test tests/unit/*.test.cjs",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report",
+    "broker:snapshot": "node scripts/broker-snapshot.mjs",
+    "broker:validate-launch": "node --env-file=.env.local scripts/validate-broker-launch.mjs"
+  },
+  "dependencies": {
+    "@ai-sdk/azure": "^4.0.82",
+    "@aws-sdk/client-s3": "^3.1084.0",
+    "@aws-sdk/credential-providers": "^3.1095.0",
+    "@aws-sdk/s3-request-presigner": "^3.1084.0",
+    "@hookform/resolvers": "^5.4.0",
+    "@neondatabase/auth": "^0.4.2-beta",
+    "@neondatabase/serverless": "^1.1.0",
+    "@sentry/nextjs": "^10.65.0",
+    "@vercel/blob": "^2.6.1",
+    "ai": "^7.0.22",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.4.0",
+    "lucide-react": "^1.24.0",
+    "next": "16.3.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "resend": "^6.17.2",
+    "stripe": "^22.3.1",
+    "uuid": "^14.0.1",
+    "winston": "^3.19.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
+    "@playwright/test": "^1.61.1",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/uuid": "^10.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "better-auth": "1.6.23",
+    "@better-auth/passkey": "1.6.23"
+  }
+}

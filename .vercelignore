@@ -1,0 +1,16 @@
+.git
+.next
+node_modules
+test-results
+playwright-report
+coverage
+BROKER_DATA_ROOM
+BROKER_SALES_PACKET
+GGuard_Broker_Handoff_Kit
+GGuard_PreDispatch_Broker_Handoff_Kit.zip
+*.docx
+*.pdf
+*.png
+tsconfig.tsbuildinfo
+.env*
+!.env.example

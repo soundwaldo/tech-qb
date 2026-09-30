@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #e2e8f0;
+  --brand: #06b6d4;
+  --brand-dark: #0891b2;
+  --brand-light: #22d3ee;
+  --accent: #f59e0b;
+  --danger: #f87171;
+  --card: #1e293b;
+  --muted: #94a3b8;
+  --border: #334155;
+}
+
+@layer components {
+  .label { @apply mb-1.5 block text-sm font-medium text-slate-700; }
+  .field { @apply min-h-11 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-base text-slate-900 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 sm:py-2.5 sm:text-sm; }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-light: var(--brand-light);
+  --color-accent: var(--accent);
+  --color-danger: var(--danger);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Blur for sample contractor quote */
+.blur-quote {
+  filter: blur(4px);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Step progress */
+.step-dot {
+  transition: all 0.2s ease;
+}
+
+/* File drop zone */
+.dropzone {
+  border: 2px dashed var(--border);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.dropzone.dragover {
+  border-color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 10%, transparent);
+}
+
+/* Scrollbar polish */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}

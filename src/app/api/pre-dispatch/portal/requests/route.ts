@@ -1,0 +1,2 @@
+import { listTenantRequests, requireTenantCompany } from "@/features/pre-dispatch/repository";
+export async function GET(request:Request){try{const company=await requireTenantCompany();const url=new URL(request.url);const result=await listTenantRequests(company.id,{query:url.searchParams.get("q")||undefined,status:url.searchParams.get("status")||undefined,page:Number(url.searchParams.get("page"))||1,pageSize:Number(url.searchParams.get("pageSize"))||25});return Response.json(result)}catch{return Response.json({error:"Unauthorized"},{status:401})}}

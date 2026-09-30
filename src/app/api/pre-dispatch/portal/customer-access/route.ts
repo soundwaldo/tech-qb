@@ -1,0 +1,3 @@
+import { getDb } from "@/lib/db";
+import { audit, requireTenantManager } from "@/features/pre-dispatch/repository";
+export async function DELETE(request:Request){try{const company=await requireTenantManager();const requestId=new URL(request.url).searchParams.get("requestId");if(!requestId)throw new Error("Request id is required");const rows=await getDb()`UPDATE pre_dispatch_customer_access_tokens SET revoked_at=now() WHERE company_id=${company.id} AND request_id=${requestId} AND revoked_at IS NULL RETURNING id`;await audit(company.id,requestId,"customer_access.revoked","company_user",{revokedCount:rows.length});return Response.json({revoked:rows.length})}catch(error){return Response.json({error:error instanceof Error?error.message:"Unauthorized"},{status:400})}}

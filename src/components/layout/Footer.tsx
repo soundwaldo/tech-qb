@@ -1,93 +1,111 @@
 import Link from "next/link";
 import { ShieldCheck } from "lucide-react";
 
+const linkClass = "transition-colors hover:text-white focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300";
+
 export function Footer() {
     return (
-        <footer className="border-t border-slate-200 bg-slate-900 text-slate-300">
-            <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
-                <div className="md:col-span-2">
-                    <div className="mb-3 flex items-center gap-2 font-bold text-white">
-                        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-600">
-                            <ShieldCheck className="h-4 w-4" />
+        <footer className="border-t border-white/10 bg-slate-950 text-slate-400">
+            <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+                <div className="md:col-span-2 lg:col-span-1">
+                    <Link href="/" className="inline-flex items-center gap-2 font-bold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300" aria-label="GGuard AI home">
+                        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-400 text-slate-950">
+                            <ShieldCheck className="h-5 w-5" strokeWidth={2.5} />
                         </span>
-                        GGuard AI
-                    </div>
-                    <p className="max-w-sm text-sm leading-relaxed text-slate-400">
-                        Two distinct products: Diagnostics for expert-reviewed repair
-                        assessments, and Pre-Dispatch for contractor website intake.
-                        Each has its own pricing and purchase flow.
+                        GGuard<span className="text-cyan-300">AI</span>
+                    </Link>
+                    <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">
+                        Two distinct products: Diagnostics for expert-reviewed repair assessments, and Pre-Dispatch for contractor website intake. Each has its own pricing and purchase flow.
                     </p>
                 </div>
 
-                <div>
-                    <h4 className="mb-3 text-sm font-semibold text-white">Products & Records</h4>
-                    <ul className="space-y-2 text-sm">
+                <nav aria-label="Products">
+                    <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-slate-500">Products</h4>
+                    <ul className="space-y-2.5 text-sm">
                         <li>
-                            <Link href="/diagnostics" className="hover:text-white">
+                            <Link href="/diagnostics" className={linkClass}>
                                 Diagnostics — Repair Assessments
                             </Link>
                         </li>
                         <li>
-                            <Link href="/diagnostics#pricing" className="hover:text-white">
+                            <Link href="/diagnostics#pricing" className={linkClass}>
                                 Assessment Pricing
                             </Link>
                         </li>
                         <li>
-                            <Link href="/pre-dispatch" className="hover:text-white">
+                            <Link href="/pre-dispatch" className={linkClass}>
                                 Pre-Dispatch — Contractor Widget
                             </Link>
                         </li>
-                        <li><Link href="/pre-dispatch#pricing" className="hover:text-white">Widget Subscription Pricing</Link></li>
                         <li>
-                            <Link href="/portal" className="hover:text-white">
-                                HOA / PM Portal
+                            <Link href="/pre-dispatch#pricing" className={linkClass}>
+                                Widget Subscription Pricing
                             </Link>
                         </li>
                         <li>
-                            <Link href="/verify" className="hover:text-white">
+                            <Link href="/portal" className={linkClass}>
+                                HOA / PM Portal
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav aria-label="Records and verification">
+                    <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-slate-500">Records</h4>
+                    <ul className="space-y-2.5 text-sm">
+                        <li>
+                            <Link href="/verify" className={linkClass}>
                                 Verify a Record
                             </Link>
                         </li>
                         <li>
-                            <Link href="/properties" className="hover:text-white">
+                            <Link href="/properties" className={linkClass}>
                                 Property UUID Registry
                             </Link>
                         </li>
                         <li>
-                            <Link href="/records" className="hover:text-white">
+                            <Link href="/records" className={linkClass}>
                                 Email My Records
                             </Link>
                         </li>
                     </ul>
-                </div>
+                </nav>
 
-                <div>
-                    <h4 className="mb-3 text-sm font-semibold text-white">Company</h4>
-                    <ul className="space-y-2 text-sm">
+                <nav aria-label="Company">
+                    <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-slate-500">Company</h4>
+                    <ul className="space-y-2.5 text-sm">
                         <li>
-                            <a href="mailto:clayton@ggaurdai.com" className="hover:text-white">
+                            <a href="mailto:clayton@ggaurdai.com" className={linkClass}>
                                 Contact
                             </a>
                         </li>
                         <li>
-                            <Link href="/refund-policy" className="hover:text-white">
+                            <Link href="/refund-policy" className={linkClass}>
                                 Refund Policy
                             </Link>
                         </li>
                         <li>
-                            <Link href="/admin" className="hover:text-white">
+                            <Link href="/admin" className={linkClass}>
                                 Expert Login
                             </Link>
                         </li>
-                        <li className="flex gap-3">
-                            <Link href="/privacy" className="hover:text-white">Privacy</Link>
-                            <Link href="/terms" className="hover:text-white">Terms</Link>
+                        <li>
+                            <Link href="/privacy" className={linkClass}>
+                                Privacy
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/terms" className={linkClass}>
+                                Terms
+                            </Link>
                         </li>
                     </ul>
-                </div>
+                </nav>
             </div>
-            <div className="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
-                © {new Date().getFullYear()} GGuard AI · Diagnostics & Pre-Dispatch · ggaurdai.com
+            <div className="border-t border-white/5 py-5">
+                <p className="mx-auto max-w-7xl px-4 text-center text-xs text-slate-500 sm:px-6 lg:px-8">
+                    © {new Date().getFullYear()} GGuard AI · Diagnostics & Pre-Dispatch · ggaurdai.com
+                </p>
             </div>
         </footer>
     );
